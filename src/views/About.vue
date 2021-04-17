@@ -8,8 +8,8 @@
     <div class="about-text">
       <p>
         This fruitionary is your playground, feel free to play around! Add or
-        remove fruits as you want or just go to a fruit page to know more about
-        it.
+        remove fruits as you want or just go to a fruit's page to know more
+        about it.
       </p>
       <p>Have fun !</p>
     </div>
