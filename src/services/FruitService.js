@@ -1,10 +1,12 @@
-import jsonPath from 'jsonpath'
+// import jsonPath from 'jsonpath'
+import retrieveFruitsFromData from '@/helpers/retrieveFruitsFromData.js'
 
 export default function retrieveFruitsService(apiClient) {
   const fruitService = {
     async getFruits() {
       const fruits = await apiClient.get('/fruit')
-      return jsonPath.query(fruits, '$..[?(@.isFruit && @.name)]')
+      return retrieveFruitsFromData(fruits)
+      // return jsonPath.query(fruits, '$..[?(@.isFruit && @.name)]')
     },
     async getFruitById(id) {
       const response = await apiClient.get(`/fruit/${id}`)
