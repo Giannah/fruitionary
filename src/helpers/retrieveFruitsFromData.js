@@ -5,14 +5,14 @@ export default function retrieveFruitsFromData(data) {
       retrieveFruitsFromData(data[d])
       if (
         Object.keys(data[d]).includes('isFruit') &&
-        Object.keys(data[d].includes('name'))
+        Object.keys(data[d]).includes('name') &&
+        data[d].isFruit === true
       ) {
         fruits = [...fruits, data[d]]
-        console.log(fruits)
-      } else {
-        return
+        console.log('fruits', fruits)
       }
+    } else {
+      return fruits
     }
   }
-  return fruits
 }
