@@ -4,8 +4,11 @@ import retrieveFruitsFromData from '@/helpers/retrieveFruitsFromData.js'
 export default function retrieveFruitsService(apiClient) {
   const fruitService = {
     async getFruits() {
+      let data = []
       const fruits = await apiClient.get('/fruit')
-      return retrieveFruitsFromData(fruits)
+      console.log('hi there', fruits)
+      retrieveFruitsFromData(fruits, data)
+      return data
       // return jsonPath.query(fruits, '$..[?(@.isFruit && @.name)]')
     },
     async getFruitById(id) {
