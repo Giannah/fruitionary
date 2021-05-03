@@ -1,7 +1,8 @@
-export default function retrieveFruitsFromData(data, fruits) {
+export default function retrieveFruitsFromData(data) {
   if (typeof data !== 'object') {
-    return
+    return []
   }
+  let fruits = Object.keys(data).flatMap((p) => retrieveFruitsFromData(data[p]))
   if (
     Object.keys(data).includes('isFruit') &&
     Object.keys(data).includes('name') &&
@@ -9,5 +10,5 @@ export default function retrieveFruitsFromData(data, fruits) {
   ) {
     fruits.push(data)
   }
-  Object.keys(data).forEach((p) => retrieveFruitsFromData(data[p], fruits))
+  return fruits
 }
