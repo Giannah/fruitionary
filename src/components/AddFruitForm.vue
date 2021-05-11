@@ -129,17 +129,14 @@ export default {
           {
             required: true,
             message: 'Please choose a date and time.',
-            trigger: 'blur',
+            trigger: 'change',
           },
         ],
       },
     }
   },
   methods: {
-    ...mapActions(['addFruit']),
-    handleChange(value) {
-      console.log(value)
-    },
+    ...mapActions(['getFruits', 'addFruit']),
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -153,6 +150,7 @@ export default {
               showClose: true,
             })
             this.resetForm('fruit')
+            this.getFruits()
           })
         } else {
           return new Error('An error occured, try submitting again')
@@ -163,7 +161,6 @@ export default {
       this.$refs[formName].resetFields()
     },
   },
-  emits: ['valid'],
 }
 </script>
 <style lang="scss">

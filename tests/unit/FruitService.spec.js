@@ -94,7 +94,7 @@ describe('FruitService', () => {
     })
   })
 
-  describe('getFrutById', () => {
+  describe('getFruitById', () => {
     it('should call the correct url', async () => {
       const fruit = {
         isFruit: true,
