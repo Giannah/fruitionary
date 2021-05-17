@@ -3,7 +3,7 @@
     <el-card>
       <div class="controls">
         <el-button
-          @click="deleteFruit(fruit.id)"
+          @click="handleClick"
           icon="el-icon-delete"
           circle
         ></el-button>
@@ -15,6 +15,22 @@
         </div>
       </router-link>
     </el-card>
+    <el-dialog title="Confirm" v-model="isDialogVisible" width="30%">
+      <p>Are you sure you want to delete this fruit?</p>
+      <span class="warning">Deleting this fruit is irreversible</span>
+      <template #footer>
+        <span>
+          <el-button @click="handleClick" type="info" plain> Cancel </el-button>
+          <el-button
+            @click="deleteFruit(fruit.id), handleClick"
+            type="primary"
+            plain
+          >
+            Yes, delete!
+          </el-button>
+        </span>
+      </template>
+    </el-dialog>
   </el-col>
 </template>
 
@@ -25,8 +41,16 @@ export default {
   props: {
     fruit: Object,
   },
+  data() {
+    return {
+      isDialogVisible: false,
+    }
+  },
   methods: {
     ...mapActions(['deleteFruit']),
+    handleClick() {
+      this.isDialogVisible = !this.isDialogVisible
+    },
   },
 }
 </script>
@@ -55,6 +79,10 @@ export default {
         font-size: 1.2rem;
       }
     }
+  }
+  .warning {
+    font-style: italic;
+    font-size: 0.65rem;
   }
 }
 </style>
